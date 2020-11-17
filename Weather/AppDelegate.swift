@@ -11,17 +11,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        // Override point for customization after application launch.
         let tabBarController = UITabBarController()
         let cityViewController = CityViewController()
         let weatherViewController = WeatherViewController()
         
-        weatherViewController.loadViewIfNeeded()
         cityViewController.loadViewIfNeeded()
+        weatherViewController.loadViewIfNeeded()
         
         tabBarController.viewControllers = [cityViewController, weatherViewController]
-        window?.makeKeyAndVisible()
-        window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = tabBarController
         return true
     }
 }
