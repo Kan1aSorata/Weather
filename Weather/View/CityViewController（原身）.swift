@@ -10,8 +10,7 @@ import UIKit
 
 class CityViewController: UIViewController {
     
-    var countries
-        = ["A":["安徽", "澳门特别行政区"], "B":["北京"], "C":["重庆"], "F":["福建"], "G":["甘肃", "贵州", "广西壮族自治区", "广东"], "H":["黑龙江", "河北", "河南", "湖北", "湖南", "海南"], "J":["吉林", "江苏", "江西"], "L":["辽宁"], "N":["内蒙古", "宁夏回族自治区"], "Q":["青海"], "S":["上海", "山西", "陕西", "山东", "四川"], "T":["天津", "台湾"], "X":["新疆维吾尔自治区", "西藏自治区", "香港特别行政区"], "Y":["云南"], "Z":["浙江"]]
+    var countries: Dictionary<String, [String]> = ["A":["安徽", "澳门特别行政区"], "B":["北京"], "C":["重庆"], "F":["福建"], "G":["甘肃", "贵州", "广西壮族自治区", "广东"], "H":["黑龙江", "河北", "河南", "湖北", "湖南", "海南"], "J":["吉林", "江苏", "江西"], "L":["辽宁"], "N":["内蒙古", "宁夏回族自治区"], "Q":["青海"], "S":["上海", "山西", "陕西", "山东", "四川"], "T":["天津", "台湾"], "X":["新疆维吾尔自治区", "西藏自治区", "香港特别行政区"], "Y":["云南"], "Z":["浙江"]]
     var keys:[String] = []
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,10 +76,10 @@ extension CityViewController: UITableViewDataSource {
 
 extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let controllers = tabBarController?.viewControllers {
-            let weatherViewController = controllers[1] as? WeatherViewController
-            weatherViewController?.city = countries[keys[(indexPath as NSIndexPath).section]]![indexPath.row]
-        }
+        let weatherViewController = (tabBarController?.viewControllers![1]) as! WeatherViewController
+        let str = countries[keys[(indexPath as NSIndexPath).section]]![indexPath.row]
+        weatherViewController.city = str
+        print("Success")
         self.tabBarController?.selectedIndex = 1
     }
 }
