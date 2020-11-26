@@ -16,8 +16,10 @@
 		FA1A77CE254EE575006C9CF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA1A77CC254EE575006C9CF3 /* LaunchScreen.storyboard */; };
 		FA1A77D9254EE575006C9CF3 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A77D8254EE575006C9CF3 /* WeatherTests.swift */; };
 		FA1A77E4254EE575006C9CF3 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A77E3254EE575006C9CF3 /* WeatherUITests.swift */; };
+		FA6EE219256FA63D00E12009 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6EE218256FA63D00E12009 /* CoreDataModel.swift */; };
 		FA8149A7255169270093B65E /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8149A6255169270093B65E /* CityViewController.swift */; };
 		FA8149AF25516A4B0093B65E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8149AE25516A4B0093B65E /* WeatherViewController.swift */; };
+		FAEB4483256E911400C31924 /* WeatherInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAEB4481256E911400C31924 /* WeatherInfo.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +61,10 @@
 		FA1A77DF254EE575006C9CF3 /* WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1A77E3254EE575006C9CF3 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		FA1A77E5254EE575006C9CF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6EE218256FA63D00E12009 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		FA8149A6255169270093B65E /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		FA8149AE25516A4B0093B65E /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		FAEB4482256E911400C31924 /* WeatherInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherInfo.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +145,12 @@
 			children = (
 				FA1A77C1254EE573006C9CF3 /* AppDelegate.swift */,
 				FA8149A4255169000093B65E /* View */,
-				FA1A77C7254EE573006C9CF3 /* Main.storyboard */,
+				FA6EE217256FA62C00E12009 /* Model */,
 				FA1A77CA254EE575006C9CF3 /* Assets.xcassets */,
 				FA1A77CC254EE575006C9CF3 /* LaunchScreen.storyboard */,
+				FA1A77C7254EE573006C9CF3 /* Main.storyboard */,
 				FA1A77CF254EE575006C9CF3 /* Info.plist */,
+				FAEB4481256E911400C31924 /* WeatherInfo.xcdatamodeld */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -165,6 +171,14 @@
 				FA1A77E5254EE575006C9CF3 /* Info.plist */,
 			);
 			path = WeatherUITests;
+			sourceTree = "<group>";
+		};
+		FA6EE217256FA62C00E12009 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA6EE218256FA63D00E12009 /* CoreDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FA8149A4255169000093B65E /* View */ = {
@@ -414,8 +428,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEB4483256E911400C31924 /* WeatherInfo.xcdatamodeld in Sources */,
 				FA8149AF25516A4B0093B65E /* WeatherViewController.swift in Sources */,
 				FA1A77C2254EE573006C9CF3 /* AppDelegate.swift in Sources */,
+				FA6EE219256FA63D00E12009 /* CoreDataModel.swift in Sources */,
 				FA8149A7255169270093B65E /* CityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +494,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -539,7 +555,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -751,6 +767,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAEB4481256E911400C31924 /* WeatherInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAEB4482256E911400C31924 /* WeatherInfo.xcdatamodel */,
+			);
+			currentVersion = FAEB4482256E911400C31924 /* WeatherInfo.xcdatamodel */;
+			path = WeatherInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA1A77B6254EE572006C9CF3 /* Project object */;
 }

@@ -36,6 +36,12 @@ class CityViewController: UIViewController {
         return keys.count
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+extension CityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let subCountries = countries[keys[section]]
         return (subCountries?.count)!
@@ -63,16 +69,6 @@ class CityViewController: UIViewController {
         return cell!
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
-
-extension CityViewController: UITableViewDataSource {
-    
-}
-
-extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let controllers = tabBarController?.viewControllers {
             let weatherViewController = controllers[1] as? WeatherViewController
