@@ -36,6 +36,18 @@ class CoreDataModel {
         }
         return data
     }
+    
+    func deleteData() {
+        do {
+            let request = NSFetchRequest<WeatherInfo>(entityName: "WeatherInfo")
+            let getData = try context.fetch(request) as [NSManagedObject]
+            for data in getData as! [WeatherInfo] {
+                context.delete(data)
+            }
+        } catch {
+            print("查询失败")
+        }
+    }
 //    func saveData(data: String) {
 //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //        let manageContext = appDelegate.managedObjectContext

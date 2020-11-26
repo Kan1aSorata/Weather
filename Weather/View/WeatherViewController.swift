@@ -14,6 +14,7 @@ import CoreData
 
 
 class WeatherViewController: UIViewController {
+    private var tempre = "等待请求.."
     var city: String? = "等待请求"{
         didSet {
             self.cityUrl = city
@@ -65,7 +66,7 @@ class WeatherViewController: UIViewController {
         testLabel.shadowColor = .black
         testLabel.shadowOffset = CGSize(width: 1.0, height: 1.0)
         testLabel.adjustsFontSizeToFitWidth = true
-        testLabel1.font = UIFont.systemFont(ofSize: 80)
+        testLabel1.font = UIFont.systemFont(ofSize: 20)
         testLabel2.font = UIFont.boldSystemFont(ofSize: 30)
         testLabel2.textColor = .white
         testLabel.snp.makeConstraints{(make) in
@@ -97,11 +98,12 @@ class WeatherViewController: UIViewController {
             make.top.equalTo(view2.snp.bottom).offset(10)
             make.left.equalTo(view.snp.left).offset(10)
         }
+        
+        testLabel1.text = tempre
     }
     
     @objc func dataCheck() {
         print(model.getData())
-        print()
         print("输出成功")
     }
     
@@ -113,9 +115,9 @@ class WeatherViewController: UIViewController {
 //        }
         getLocation() { [self] cityId -> Void in
             self.getWeather(cityId: cityId)
-            self.testLabel1.text = model.getData()[0]
         }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         self.testLabel.text = ""
@@ -124,6 +126,7 @@ class WeatherViewController: UIViewController {
 //        UIView.animate(withDuration: 3) {
 //
 //        }
+        model.deleteData()
     }
     
     func getDefaultLocation(callBack: @escaping (String, String) -> Void){
@@ -169,14 +172,17 @@ class WeatherViewController: UIViewController {
 
     func getWeather(cityId: String) {
         let paramenters = ["key": "2277d865653b45f8af818efa55550d98", "location": cityId]
-        AF.request("https://devapi.qweather.com/v7/weather/now", method: .get, parameters: paramenters).validate().responseJSON {responds in
+        AF.request("https://devapi.qweather.com/v7/weather/now", method: .get, parameters: paramenters).validate().responseJSON { [self]responds in
             switch responds.result {
             case .success(let value):
                 let json = JSON(value)
 //                callBack(json["now"]["temp"].string!)//TODO：返回多个数据
                 self.model.addNewData(json["now"]["temp"].stringValue)
-                print("使用了getWeather")
-                print(json["now"]["temp"].stringValue)
+//                print("使用了getWeather")
+//                print(json["now"]["temp"].stringValue)
+                self.testLabel1.font = UIFont.systemFont(ofSize: 80)
+                self.testLabel1.text = model.getData().last
+                print(self.model.getData())
             case .failure(let error):
                 print(error)
             }
