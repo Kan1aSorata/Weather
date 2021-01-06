@@ -18,12 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let cityViewController = CityViewController()
         let weatherViewController = WeatherViewController()
+        let navigationController = UINavigationController(rootViewController: cityViewController)
 //        let locationManager = CLLocationManager()
         locationService()
         cityViewController.loadViewIfNeeded()
         weatherViewController.loadViewIfNeeded()
         
-        tabBarController.viewControllers = [cityViewController, weatherViewController]
+        tabBarController.viewControllers = [navigationController, weatherViewController]
         self.window?.makeKeyAndVisible()
         self.window?.rootViewController = tabBarController
         return true

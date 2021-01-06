@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CityInfo" representedClassName="CityInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="city" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ProvinceInfo" representedClassName="ProvinceInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="province" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="WeatherInfo" representedClassName="WeatherInfo" syncable="YES" codeGenerationType="class">
         <attribute name="temp" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="WeatherInfo" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="CityInfo" positionX="-63" positionY="9" width="128" height="44"/>
+        <element name="ProvinceInfo" positionX="-54" positionY="18" width="128" height="44"/>
     </elements>
 </model>

@@ -19,13 +19,13 @@ class CoreDataModel {
         }
     }
     
-    func addNewData(_ data: String) {
+    func addNewTempData(_ data: String) {
         let weatherInfo = NSEntityDescription.insertNewObject(forEntityName: "WeatherInfo", into: context) as! WeatherInfo
         weatherInfo.temp = data
         saveData()
     }
     
-    func getData() -> [String]{
+    func getTempData() -> [String]{
         var data = [String]()
         do {
             let request = NSFetchRequest<WeatherInfo>(entityName: "WeatherInfo")
@@ -36,6 +36,7 @@ class CoreDataModel {
         }
         return data
     }
+    
     
     func deleteData() {
         do {

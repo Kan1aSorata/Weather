@@ -11,5 +11,4 @@ import CoreData
 
 @objc(WeatherInfo)
 public class WeatherInfo: NSManagedObject {
-
 }
